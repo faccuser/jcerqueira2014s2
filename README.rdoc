@@ -1,5 +1,8 @@
 == README
 
+https://www.researchgate.net/publication/272887346_Desenvolvimento_de_um_Portal_Web_para_Viajantes_Utilizando_Ruby_on_Rails_e_Bootstrap_Atividade_Pratica_de_Desenvolvimento_de_Software
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
