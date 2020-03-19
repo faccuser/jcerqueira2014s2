@@ -1,0 +1,10 @@
+li.list-group-item
+	.row
+		.comment-body
+			= comment.comment
+		.comment-avatar.user-img-sm
+			= image_tag comment.user.profile.avatar_url(:thumb)
+		.comment-head
+			span class="name" #{comment.user.firstname} #{comment.user.lastname}
+			span #{comment.created_date}
+		

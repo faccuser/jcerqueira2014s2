@@ -1,0 +1,61 @@
+.container-fluid
+  .blog-header
+    h2.page-header
+      |Hey 
+      strong
+        = current_user.name
+      |, Welcome back!!
+  .row
+    .col-sm-8
+      .widget.stacked
+        .widget-header
+          i.icon-briefcase
+          h3 Upcoming Trips
+        .widget-content
+          .buttons
+            a.btn.btn-primary.btn-sm href="#{new_trip_path}"
+              i.icon-plus
+              | Add new Trip
+          br
+          -if @upcoming_trips.present?
+            .table-responsive
+              table.table.table-bordered.table-hover.table-striped
+                thead
+                  tr
+                    th Name
+                    th Date 
+                    th Description
+                    th Destinations
+                    th
+                tbody id="myTable"
+                  = render partial: 'trips/trip', collection: @upcoming_trips
+              ul.pagination.pager id="myPager"
+    .col-sm-4
+      - if @latest_followers.present?
+        .widget.stacked
+          .widget-header
+            i.icon-briefcase
+            h3 Latest Followers
+          .widget-content
+            .table-responsive
+              table.table.table-striped
+                tbody
+                  - @latest_followers.in_groups_of(3).each do |group|
+                    tr
+                    - group.each do |user|
+                      - if user.present?
+                        td = link_to image_tag(user.profile.avatar_url(:thumb)), user_path(user)
+      - if @latest_followings.present?
+        .widget.stacked
+          .widget-header
+            i.icon-briefcase
+            h3 Latest Following
+          .widget-content
+            .table-responsive
+              table.table.table-striped
+                tbody
+                  - @latest_followings.in_groups_of(3).each do |group|
+                    tr
+                    - group.each do |user|
+                      -if user.present?
+                        td = link_to image_tag(user.profile.avatar_url(:thumb)), user_path(user)

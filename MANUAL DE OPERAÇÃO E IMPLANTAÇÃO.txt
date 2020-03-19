@@ -1,0 +1,40 @@
+﻿	FACULDADE CAMPO LIMPO PAULISTA - BACHARELADO EM CIÊNCIAS DA COMPUTAÇÃO
+		
+	Desenvolvimento de um Portal para Viajantes utilizando Ruby on Rails e Bootstrap
+		
+	ANEXO C – MANUAL DE OPERAÇÃO E IMPLANTAÇÃO
+
+
+	O primeiro passo para a implantação do sistema web deverá ser a configuração do ambiente onde a aplicação será instalada. A aplicação é homologada para utillizar o servidor Linux, utilizando umas de suas distribuições, o Ubuntu, versão 12.04. 
+	A razão pela qual a aplicação estar usando o Ubuntu é porque a maioria dos códigos que você escreve será executado em um servidor Linux. Ubuntu é uma das distribuições Linux mais fáceis de usar pois possui muita documentação, por esse motivo é uma boa opção utilizá-lo. Para obter o servidor, acesse o site http://releases.ubuntu.com/12.04/ e faça o download.
+	Para a instalação do Ruby, primeiramente será necessário fazer a instalação de algumas dependências. Abra um terminal (Prompt) e execute os comandos abaixo:
+		•	sudo apt-get update
+		•	sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev
+	A instalação do Ruby será feita utilizando um dos métodos disponíveis de instalação, o Ruby Version Manager (RVM).
+	Instale o RVM executando o comando:
+		•	curl -L https://get.rvm.io | bash -s stable
+	Depois que é feita a instalação do RVM. Será necessário sair de sua sessão do terminal e iniciar uma nova. Com a nova sessão aberta execute o comando abaixo:
+		•	source ~/.rvm/scripts/rvm
+	Para funcionar corretamente, o RVM tem algumas dependências que precisam ser instaladas. Execute o comando abaixo para instalá-las automaticamente:
+		•	rvm requirements
+	A instalação do Ruby torna-se muito fácil uma vez que esteja utilizando RVM, para instalá-lo basta executar o comando abaixo:
+		•	rvm install ruby
+	O próximo passo das configurações é a instalação do RubyGems, para isso execute o comando abaixo:
+		•	rvm rubygems current
+	Depois que tudo estiver configurado, é hora de instalar o Rails. Para iniciar o processo execute o comando abaixo:
+		•	gem install rails
+	Este processo pode demorar um pouco. Depois que ele terminar, você terá Ruby on Rails instalados no seu servidor.
+	Rails vem com sqlite3 como o banco de dados padrão. Provavelmente, você não vai querer usá-lo porque ele é armazenado como um arquivo simples no disco. Você provavelmente vai querer algo mais robusto como o MySQL.
+	Você pode instalar o servidor e cliente MySQL a partir dos pacotes do repositório do Ubuntu. Como parte do processo de instalação, você vai definir a senha para o usuário root. Esta informação vai entrar em seu arquivo database.yml Rails da sua aplicação no futuro. Para a instalação execute:
+		•	sudo apt-get install mysql-server mysql-client libmysqlclient-dev 
+	Instalando o libmysqlclient-dev, você terá os arquivos necessários para compilar o gem mysql2 que é o que o Rails irá usar para se conectar ao MySQL quando você configurar sua aplicação Rails.
+	Próximo passo é atualizar as gem do projeto, para isso execute o comando abaixo:
+		•	bundle update
+	Após a instalação do Ruby, Rails e Banco de Dados no servidor, esse é o momento de iniciar a instalação do sistema web. Navegue até o diretório onde desejar criar o seu projeto no servidor e descompacte para dentro desta pasta o arquivo .zip obtido do projeto. 
+	Antes de iniciar o servidor é necessário alterar o arquivo de configuração do banco de dados do projeto. Navegue até /config e edite o arquivo database.yml incluindo os dados de acesso ao banco de dados, conforme Figura C1.
+ 
+	Próximo passo da instalação é a migração do banco de dados. Esse processo irá criar todas as tabelas definidas no projeto. Para isso execute o comando:
+		•	rake db:migrate
+	O último passo da instalação é iniciar o servidor Rails, para isso execute o comando abaixo:
+		•	rails server
+	Processo finalizado, sua aplicação está configurada e pronta para o uso. Para acessar o sistema web, o usuário deverá abrir um navegador web e informar a URL (Uniform Resource Locator).

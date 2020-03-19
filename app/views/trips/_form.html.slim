@@ -1,0 +1,57 @@
+= simple_form_for @trip, role: 'form' do |f|
+  = render partial: 'shared/errors', locals: {obj: @trip}
+  .col-md-6
+    .form-group
+      .row
+        = f.input :image, input_html: { class: 'form-control' }, wrapper_html: {class: 'col-md-12 col-sm-8'}
+  .col-md-6
+    .form-group
+      .row
+        = f.input :starts_at, as: :string, input_html: { class: 'form-control datepicker' }, wrapper_html: {class: 'col-md-6 col-sm-6'}
+        = f.input :ends_at, as: :string, input_html: { class: 'form-control datepicker' }, wrapper_html: {class: 'col-md-6 col-sm-6'}
+  .col-md-6
+    .form-group
+      .row
+        = f.input :title, input_html: { class: 'form-control' }, wrapper_html: {class: 'col-md-12 col-sm-8'}
+  .col-md-6
+    .form-group
+      .row
+        =f.input :description, input_html: { class: 'form-control' }, wrapper_html: {class: 'col-md-12 col-sm-8'}
+  .col-md-6
+    .form-group
+      .row
+        =f.input :tag_list, input_html: { class: 'form-control' }, wrapper_html: {class: 'col-md-12 col-sm-8'}
+  .col-md-6
+    .form-group
+      .row
+        =f.input :private, collection: [['Private',true],['Followers',false]],as: :radio_buttons, input_html: { class: 'radio' }, wrapper_html: {class: 'col-md-6 col-sm-3'}
+  .col-md-8
+    fieldset style="margin-top:20px;"
+      legend Destination
+      .form-group
+        .associationlist
+          = f.simple_fields_for :destinations do |destination| 
+            = render 'destination_fields_filled', :f => destination
+        .links
+          = link_to_add_association 'Add', f, :destinations    
+    - unless @trip.new_record?
+      .divdashed
+      fieldset 
+        legend Entertainment
+        .form-group
+          .associationlist
+            = f.simple_fields_for :entertainments do |entertainment|
+              = render 'entertainment_fields_filled', :f => entertainment
+          .links
+            = link_to_add_association 'Add', f, :entertainments
+      .divdashed
+      fieldset 
+        legend Expenses
+        .form-group.associationlist
+          = f.simple_fields_for :expenses do |expense|
+            = render 'expense_fields_filled', :f => expense
+          .links
+            = link_to_add_association 'Add', f, :expenses  
+      .divdashed
+    = link_to 'Cancel', trips_path, class: 'btn btn-default'
+    =f.submit "#{@trip.new_record? ? 'Create' : 'Update'}",class: 'btn btn-primary'

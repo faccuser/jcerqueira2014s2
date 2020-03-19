@@ -1,0 +1,17 @@
+tr
+  td = trip.title
+  td = trip.date_range
+  / Jan 01 - 06,2014
+  td = trip.description
+  / Party 2014 in Europe
+  td = trip.trip_destinations
+  / Ibiza - Mallorca - Madrid
+  - if trip.is_upcoming?
+  	td
+  		= link_to 'Edit', edit_trip_path(trip), class: 'button btn btn-xs btn-primary'
+  	td
+    	= link_to 'Delete', trip_path(trip), method: :delete, class: 'button btn btn-xs btn-primary'
+  - else
+	  td
+	    = link_to 'Details', trip_path(trip), class: 'button btn btn-xs btn-primary'
+  

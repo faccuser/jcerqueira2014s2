@@ -1,0 +1,41 @@
+.col-md-8
+	.widget.stacked
+  		.widget-header
+    		i.icon-user
+    		h3 User Details
+  		/! /widget-header
+	    .widget-content
+	  	  .container
+	    	.row
+	        	fieldset
+	        		legend Basic Info
+	            	.col-md-4
+		            	fieldset
+		            		.col-md-12
+		  					= image_tag @user.profile.avatar_url(:avatar)
+		  					.divempty
+		  						br
+		            		.col-md-12
+		            			.follow-div.text-center
+									- if current_user.following?(@user)
+										= link_to "Unfollow", user_unfollow_path(@user), class: 'btn btn-primary'
+									- else 
+										= link_to "Follow", user_follow_path(@user), class: 'btn btn-primary'
+		            .col-md-8
+			         	fieldset
+			            	.col-md-6
+								dl
+									dt First Name
+									dd = "#{@user.firstname}"
+							.col-md-6
+								dl
+									dt Last Name
+									dd = "#{@user.lastname}"
+							.col-md-6
+								dl
+									dt User Name
+									dd = "#{@user.username}"
+							.col-md-6
+								dl
+									dt User Name
+									dd = "#{@user.email}"

@@ -1,0 +1,19 @@
+.container
+  .row
+    .title_container.extralight-border
+      h1.page-title.meta-color Followers
+    .template-page.content.nine.alpha.units.col-md-12
+      - if @followers.empty?
+        .col-md-12 style="padding-top:240px;padding-left:300px;"
+          h1 There is no following
+      - else
+        .user-entry.col-md-12
+            .follower-users
+              - @followers.each do |user|
+                .follower-user.col-md-4
+                  figure itemprop="image" 
+                    a href="http://appendto.com/team/mike-hostetler/" 
+                      img.avatar.avatar-140.photo alt="" height="140" src="http://3q9r3w5fmk02nwdgj2ehfy278g.wpengine.netdna-cdn.com/wp-content/uploads/2012/11/BlackShirt-Square-180x180.png" width="140" 
+                  h3.member itemprop="name" 
+                    a href="http://appendto.com/team/mike-hostetler/"  Mike Hostetler
+  /! end container

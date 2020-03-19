@@ -1,0 +1,9 @@
+-unless @trip.entertainments.empty?
+	.divdotted
+.row style="padding-bottom: 20px;"
+	.col-md-12.col-sm-10.nested-fields
+		.field
+			= f.input :when, as: :string, input_html: { class: 'form-control datepicker', }, wrapper_html: {class: 'inline col-sm-6 col-md-6'}
+			= f.input :description, input_html: { class: 'form-control'}, wrapper_html: {class: 'inline col-sm-6 col-md-6'}
+			= f.input :place, input_html: { class: 'form-control'}, wrapper_html: {class: 'inline col-sm-6 col-md-6 inputassociation'}
+		= link_to_remove_association "Remove", f

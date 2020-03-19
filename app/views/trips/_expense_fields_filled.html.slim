@@ -1,0 +1,7 @@
+.row style="padding-bottom: 20px;"
+	.col-md-10.col-sm-10.nested-fields
+		.field
+			= f.input :price, input_html: { class: 'form-control', disabled:'' }, wrapper_html: {class: 'inline col-sm-6 col-md-9 inputassociation'}
+			= link_to_remove_association "Remove", f
+			= f.input :description, input_html: { class: 'form-control', disabled:'' }, wrapper_html: {class: 'inline col-sm-6 col-md-12'}
+			

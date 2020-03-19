@@ -1,0 +1,247 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require bootstrap-datepicker3
+ *= require_self
+ */
+ body {
+ 	font-family: 'Open Sans', 'sans-serif';
+ }
+ .navbar {
+  margin-bottom: 0px;
+}
+.main_home {
+	min-height: 500px;
+	background: #0f0f0f;
+}
+.well-white {
+	background: #fff;
+}
+.signin-block {
+	width:400px;
+	margin-top: 75px;
+	margin-left: 400px;
+}
+.simple_label {
+	font-weight: normal;
+}
+.blue {
+	color: #0099cc;
+}
+#error-explanation{
+	font-size: 12px;
+	font-weight: normal;
+	color: #ff0000;
+}
+a {
+	cursor: pointer;
+}
+.blog-sidebar h4 {
+	font-weight: bold;
+}
+
+.sidebar-module {
+	background-color: #f9f9f9;
+	border-radius: 10px;
+	border: 1px solid #CCCCCC;
+	margin-bottom: 15px;
+	padding: 10px;
+}
+
+.list-unstyled ul li img {
+	width: 50%;
+}
+
+.sidebar-module img {
+	width: 50%;
+	border-radius: 50%;
+	height: 32px;
+	width: 32px;
+}
+
+.table img{
+	display: block;
+  	width: 40px;
+  	height: 40px;
+  	margin: .3em auto;
+  	background-size: cover;
+  	background-repeat: no-repeat;
+  	background-position: center center;
+  	-webkit-border-radius: 99em;
+  	-moz-border-radius: 99em;
+  	border-radius: 99em;
+  	border: 3px solid #eee;
+  	box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);  
+}
+
+.list-options a {
+	background-color: #101010;
+	color: white;
+	border: 1px solid #101010;
+}
+.list-options a:hover {
+	background-color: #F90;
+}
+
+.trip-img-lg img {
+	width: 100%;
+}
+
+.user-img-sm img{
+	width: 40px;
+  	height: 40px;
+  	margin: .3em auto;
+  	background-size: cover;
+  	background-repeat: no-repeat;
+  	background-position: center center;
+  	-webkit-border-radius: 99em;
+  	-moz-border-radius: 99em;
+  	border-radius: 99em;
+  	border: 3px solid #eee;
+  	box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);  
+}
+
+.sidebaroptions {
+	padding:0; 
+	min-height:600px; 
+	background:#101010;
+}
+.comment-avatar {
+	margin-left: 15px;
+}
+.comment-avatar,
+.comment-head {
+	float:left;
+}
+.comment-head .name {
+	display: block;
+	margin: 0;
+	font-weight: bold;
+}
+.comment-body {
+	margin: 15px;
+}
+.comment-head {
+	margin-top: 5px;
+	margin-left: 10px;
+}
+.comment-head {
+	margin-top: 5px;
+	margin-left: 10px;
+}
+.trip-title {
+	text-align: center;
+}
+.push-text-center {
+	text-align: center;
+}
+.panel-thumbnail {
+	float: left;
+	margin-left: 15px;
+	margin-top: 15px;
+}
+
+/*@media (min-width: 480px) {
+	.panel {
+		height: 250px;
+	}
+}*/
+
+.panel-overflow {
+	overflow: auto; 
+	width:100%; 
+	height:200px;
+}
+.thumbnail:hover {
+	box-shadow: 1px 1px 4px #999;
+}
+
+.thumbnail.img-user-lg {
+	margin-left: 15px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.thumbnail.img-user-lg img{
+	width: 140px;
+  	height: 140px;
+  	margin: .3em auto;
+  	background-size: cover;
+  	background-repeat: no-repeat;
+  	background-position: center center;
+  	-webkit-border-radius: 99em;
+  	-moz-border-radius: 99em;
+  	border-radius: 99em;
+  	border: 3px solid #eee;
+  	box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+}
+
+.tags a {
+	color: #fff;
+	border: 1px solid #F90;
+	background-image: linear-gradient(to bottom, #ff9900 0%, #cc7a00 100%);
+	background-color: #F90;
+	padding: 5px;
+	border-radius: 10px;
+	text-decoration: none;
+	margin-top: 15px;
+	display: block;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	float: left;
+}
+
+.add_fields, .remove_fields {
+	-webkit-appearance: button;
+  	-moz-appearance: button;
+  	appearance: button;
+  	padding: .5em;
+  	background-color: #cc7a00;
+  	color: #fff;
+  	padding: 6px 12px;
+  	border-radius: 4px;
+}
+
+.links  {
+	padding-left:15px;
+	padding-bottom:10px;
+}
+
+.associationlist {
+	padding-bottom:15px;
+} 
+
+.inputassociation {
+	margin-top: 3px;
+}
+
+.divdashed {
+	border-top:5px dashed #ccc; 
+	padding-top:20px;
+}
+.divdotted {
+	border-top:5px dotted #ccc; 
+	padding-top:20px;
+}
+
+#myTable tr td a {
+	margin-left: 20px;
+	padding: 2px;
+	width: 4em;
+}
+
+#myTable tr td aa{
+	margin-left: 20px;
+	padding: 2px;
+	width: 4em;
+}

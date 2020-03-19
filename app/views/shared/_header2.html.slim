@@ -1,0 +1,24 @@
+.subnavbar
+  .subnavbar-inner
+    .container
+      a.subnav-toggle data-target=".subnav-collapse" data-toggle="collapse" href="javascript:;" 
+        span.sr-only Toggle navigation
+        i.icon-reorder
+      .collapse.subnav-collapse
+        ul.mainnav
+          li.active
+            a href="#{root_path}./dashboard" 
+              i.icon-home
+              span Home
+          li
+            a href="#{trips_path}"
+              i.icon-briefcase
+              span Trips
+          li
+            a href="#{root_path}./network" 
+              i.icon-user
+              span Network
+      /! /.subnav-collapse
+    /! /container
+  /! /subnavbar-inner
+/! /subnavbar

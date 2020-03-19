@@ -1,0 +1,17 @@
+h4 
+  |Sign in to 
+  span.blue See You Around
+hr
+= simple_form_for resource, as: resource_name, url: session_path(resource_name), role: 'form' do |f|
+  .form-group
+    = f.input :username, input_html: { autofocus: true,class: 'form-control'}, label_html: {class: 'simple_label'}
+  .form-group
+    = f.label :password, class: 'simple_label'
+    = f.password_field :password, autocomplete: "off", class: 'form-control'
+  hr
+    |&nbsp;&nbsp;&nbsp; 
+    =f.submit 'Login', class: 'btn btn-success'
+  .div style="margin-top:10px;"
+    span Don't have an account?
+    |&nbsp;&nbsp;
+    = link_to 'Sign up', new_registration_path(resource_name)

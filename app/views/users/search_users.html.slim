@@ -1,0 +1,21 @@
+.container-fluid
+  .row
+    .col-md-12 style="background:#e9eaed;min-height:600px;"
+      .row
+        .div style="padding-left:40px;padding-bottom:20px; text-align:center"
+          h1 Users
+        - if @users_list.empty?
+          .col-md-12 style="padding-top:240px;padding-left:300px;"
+            h1 There is no following
+        - else
+          .col-md-12
+            .row
+              - @users_list.each do |user|
+                - if user.present?
+                  .col-md-4
+                    .thumbnail.img-user-lg
+                      = link_to image_tag(user.profile.avatar_url(:avatar)),user_path(user)
+                      .caption
+                        h3 #{user.name} (#{user.username})
+                        h4 #{user.email}
+                        

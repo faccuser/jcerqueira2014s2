@@ -1,0 +1,14 @@
+.col-sm-3.col-md-2.sidebar
+  = render 'sidebar'
+.col-sm-9.main
+  h3.sub-header Upcoming Trips
+  - if @trips.present?
+	  .table-responsive
+	    table.table.table-striped
+	      thead
+	        tr
+	          th Date
+	          th Description
+	          th Destinations
+	      tbody
+	        = render partial: 'trip', collection: @trips

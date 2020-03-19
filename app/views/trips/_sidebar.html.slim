@@ -1,0 +1,9 @@
+.list-group
+	a.list-group-item class="#{(params[:controller] == 'trips' && params[:action]== 'upcoming') ? 'active' : ''}" href="#{upcoming_trips_path}" Upcoming trips
+	a.list-group-item class="#{(params[:controller] == 'trips' && params[:action]== 'past') ? 'active' : ''}" href="#{past_trips_path}" Past trips
+	a.list-group-item class="#{(params[:controller] == 'trips' && params[:action]== 'new') ? 'active' : ''}" href="#{new_trip_path}">+ Add Trip
+
+/ ul.nav.nav-sidebar
+/ 	a href="#{upcoming_trips_path}" Upcoming trips
+/ 	a href="#{past_trips_path}" Past trips
+/ 	a class="#{(params[:controller] == 'trips' && params[:action]== 'new') ? 'active' : ''}" href="#{new_trip_path}">+ Add Trip

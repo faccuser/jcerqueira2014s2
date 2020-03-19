@@ -1,0 +1,31 @@
+.collapse.navbar-collapse.navbar-ex1-collapse
+  ul.nav.navbar-nav.navbar-right
+    li.dropdown
+      a.dropdown-toggle data-toggle="dropdown" href="#" 
+        = current_user.name
+        b.caret
+      ul.dropdown-menu
+        li
+          a href="/settings"  Settings
+        li.divider
+        li
+          = link_to 'Logout', destroy_user_session_path, :method => :delete
+  form.navbar-form.navbar-right role="search"
+    .form-group
+      input.form-control.input-sm.search-query placeholder="Search..." type="text" 
+.subnavbar
+  .subnavbar.subnavbar-inner
+    .container
+      a.subnav-toggle href="javascript:;" data-toggle="collapse" data-target=".subnav-collapse"
+        span class="sr-only" Toggle navigation
+        i.icon-reorder
+      .collapse.subnav-collapse
+        ul.mainnav
+          li.active
+            a href="/dashboard"
+              i.icon-home
+              span Home
+          li
+            a href="/dashboard"
+              i.icon-glass
+              span Products

@@ -1,0 +1,32 @@
+.container-fluid
+  .row
+    .col-sm-2.col-md-2.sidebar.sidebaroptions
+      = render 'sidebar'
+    .col-md-10 style="background:#e9eaed;min-height:600px;"
+      .row style="padding-top:40px;"
+        - if @followings.empty?
+          .col-md-12 style="padding-top:240px;padding-left:300px;"
+            h1 There is no following
+        - else
+          .col-md-12
+            .row  
+              - @followings.each do |user|
+                - if user.present?
+                  - user.trips.upcoming.order("created_at desc").each do |trip|
+                    - if trip.private==false
+                      .col-md-12
+                        .panel.panel-default
+                          .panel-thumbnail.thumbnail
+                            .trip-img-lg
+                              = link_to image_tag(trip.image_url(:avatar)),trip_path(trip)
+                              .caption
+                                .comment-avatar.user-img-sm
+                                  = link_to image_tag(trip.user.profile.avatar_url(:thumb)), user_path(trip.user)
+                                .comment-head
+                                  span class="name" #{trip.user.name}
+                                  span Created on #{trip.created_date}
+                          .row.panel-body
+                            .comment-body.push-text-center
+                              h2 #{trip.title} 
+                              h3 #{trip.date_range}
+                              h5 #{trip.description}

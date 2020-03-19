@@ -1,0 +1,43 @@
+.col-md-12
+	.widget.stacked
+  		.widget-header
+    		i.icon-user
+    		h3 User
+  		/! /widget-header
+	    .widget-content
+	  	  .container
+	    	.row
+	        	fieldset
+	        		legend Basic Info
+	            	.col-md-3
+		            	fieldset
+		            		.col-md-12
+		  					= image_tag @profile.avatar_url(:avatar)
+		  					= simple_form_for @profile, url: update_profile_users_path, method: :post , role: 'form' do |f|
+							  = render partial: 'shared/errors', locals: {obj: @profile}
+							  .form-group
+							    .row
+							      = f.input :avatar, as: :file, input_html: { class: '' }, wrapper_html: {class: 'col-md-4 col-sm-4'}
+							  = f.submit "#{@profile.new_record? ? 'Upload Avatar' : 'Change Avatar'}", class: 'btn btn-primary', id: "btn-change-avatar"
+		  					.divempty
+		  						br
+		  			.col-md-9	
+					  fieldset
+					    .col-md-5
+					    	.form-group
+					      		label for="firstname"  First Name
+					      		input#firstname.form-control type="text" value="#{@profile.user.firstname}" disabled=""
+					    .col-md-1
+
+					    .col-md-5
+						    .form-group
+						      label for="lastname"  Last Name
+						      input#lastname.form-control type="text" value="#{@profile.user.lastname}" disabled=""
+					    .col-md-5
+					    	.form-group
+						      label for="email"  Email
+						      input#email.form-control type="text" value="#{@profile.user.email}" disabled=""
+		              .col-md-12
+		            	a.button.btn.btn-primary type="submit" href="#{edit_user_registration_path}"
+		          			i.icon-edit
+    			  			| Edit User

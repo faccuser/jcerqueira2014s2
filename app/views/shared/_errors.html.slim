@@ -1,0 +1,8 @@
+-if obj.errors.present?
+  #error-explanation
+    =pluralize obj.errors.count, "error"
+    = " prohibited this record from being saved:"
+    ul
+      - obj.errors.full_messages.each do |msg|
+        li
+          =msg

@@ -1,0 +1,21 @@
+.container-fluid
+  .row
+    .col-sm-2.col-md-2.sidebar.sidebaroptions
+      = render 'sidebar'
+    .col-md-10 style="background:#e9eaed;min-height:600px;"
+      .row style="padding-top:40px;"
+        - if @followings.empty?
+          .col-md-12 style="padding-top:240px;padding-left:300px;"
+            h1 There is no following
+        - else
+          .col-md-12
+            .row
+              - @followings.each do |user|
+                - if user.present?
+                  .col-md-4
+                    .thumbnail.img-user-lg
+                      = link_to image_tag(user.profile.avatar_url(:avatar)),user_path(user)
+                      .caption
+                        h3 #{user.name}
+                        h4 #{user.email}
+                        

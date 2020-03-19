@@ -1,0 +1,35 @@
+.col-md-12
+  .buttons
+    a.btn.btn-primary.btn-sm href="#{new_trip_path}"
+      i.icon-plus
+      | Add new Trip
+  br
+    .widget.stacked
+      .widget-header
+        i.icon-briefcase
+        h3 Trips
+      .widget-content
+        .table-responsive
+          table.table.table-bordered.table-hover.table-striped
+            thead
+              tr
+                th Name
+                th Date Start
+                th Date End
+                th Description
+                th 
+            tbody id="myTable"
+                - @trips.each do |trip|
+                  tr
+                    td = trip.title
+                    td = trip.starts_at
+                    td = trip.ends_at
+                    td = trip.description
+                    td 
+                      = link_to 'Edit', edit_trip_path(trip),  class: 'button btn btn-xs btn-primary'
+                      = link_to 'Details', trip,  class: 'button btn btn-xs btn-primary'
+                      = link_to 'Delete', trip, data: {:confirm => 'Are you sure?'}, :method => :delete,  class: 'button btn btn-xs btn-primary'
+          ul.pagination.pager id="myPager"
+    /! /row
+  /! /container
+/! /main

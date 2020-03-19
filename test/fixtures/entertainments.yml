@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  when: 2014-05-05
+  description: MyText
+  place: MyString
+  trip_id: 
+
+two:
+  when: 2014-05-05
+  description: MyText
+  place: MyString
+  trip_id: 

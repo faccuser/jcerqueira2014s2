@@ -1,0 +1,114 @@
+.col-md-8
+	.widget.stacked
+  		.widget-header
+    		i.icon-briefcase
+    		h3 Trip Details
+  		/! /widget-header
+	    .widget-content
+	  	  .container
+	    	.row
+	        	fieldset
+	        		legend Overview
+	            	.col-md-4
+		            	fieldset
+		            		.col-md-2
+		  					= image_tag @trip.image_url(:avatar)    	
+		            		.col-md-10
+		            			h4 style="text-align:center;" #{@trip.title}
+		            .col-md-8
+			         	fieldset
+			            	.col-md-6
+								dl
+									dt Date Start
+									dd = "#{@trip.starts_at}"
+							.col-md-6
+								dl
+									dt Date End
+									dd = "#{@trip.ends_at}"
+							.col-md-6
+								dl
+									dt Sharing
+									dd = "#{@trip.private? ? 'No' : 'Yes'}"
+							.col-md-6
+								dl
+									dt Tags
+									- @trip.tag_list.map do |tag|
+										dd = link_to tag, tag_path(tag)
+							.col-md-12
+								dl
+									dt Description
+									dd = "#{@trip.description}"
+							.col-md-12
+								a href="/settings" Test
+				br
+				fielset
+					legend Destinations
+					ul
+						- @trip.destinations.each do |destination|
+              				li
+                				h4 #{destination.name}
+                - if @trip.entertainments.present?
+					br
+					fielset
+						legend Entertainments
+						- @trip.entertainments.each do |entertainment|
+							.col-md-6
+								dl
+									dt When
+									dd #{entertainment.when}
+							.col-md-6
+								dl
+									dt Place
+									dd #{entertainment.place}
+
+							.col-md-12
+								dl
+									dt Description
+									dd #{entertainment.description}
+				- if @trip.expenses.present?
+					br
+					fielset
+						legend Expenses
+						- @trip.expenses.each do |expense|
+							.col-md-6
+								dl
+									dt Price
+									dd #{expense.price}
+							.col-md-6
+								dl
+									dt Place
+									dd #{expense.description}
+				- if @trip.user == current_user
+					a.btn.btn-primary.btn-sm href="#{edit_trip_path}"
+      					i.icon-edit
+      					| Edit Trip
+.col-md-4
+  .widget.stacked
+    .widget-header
+      i.icon-user
+      h3 Suggest Users
+    .widget-content
+  	  .col-md-12
+	  	.table-responsive
+            table.table.table-striped
+              tbody
+                - @suggest_users.in_groups_of(3).each do |group|
+                  tr
+                  - group.each do |user|
+                    - if user.present?
+                    	td = link_to image_tag(user.profile.avatar_url(:thumb)),user_path(user)
+.col-md-12
+  .widget.stacked
+    .widget-header
+      i.icon-briefcase
+      h3 Trip Comments
+    .widget-content
+  	  .col-md-11
+	  	= render partial: 'comments/comments', locals: {comments: @trip.comments}
+	  .col-md-6
+		  = simple_form_for [@trip, Comment.new], input_html: {role: 'form', class: 'form-horizontal'} do |f|
+			.form-group
+				= f.input :comment, input_html: {class: 'form-control'}
+				= f.input :user_id, as: :hidden, input_html: { value: current_user.id } 
+			.form-group
+				= f.submit 'Add Comment', class: 'btn btn-primary'

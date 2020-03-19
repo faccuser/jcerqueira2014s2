@@ -1,0 +1,7 @@
+.list-group.list-options
+	a.list-group-item href="#{root_path}./followers"
+		i.icon-user Followers
+	a.list-group-item href="#{root_path}./followings"
+		i.icon-user Following
+	a.list-group-item class="#{(params[:controller] == 'trips' && params[:action]== 'new') ? 'active' : ''}" href="#{request.fullpath}"
+		i.icon-refresh Refresh
